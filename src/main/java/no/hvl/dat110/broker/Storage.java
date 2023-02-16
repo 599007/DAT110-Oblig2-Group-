@@ -56,12 +56,10 @@ public class Storage {
 	}
 
 	public void removeClientSession(String user) {
-
-		// TODO: disconnet the client (user) 
-		// and remove client session for user from the storage
-		
-		throw new UnsupportedOperationException(TODO.method());
-		
+		// TODO: disconnet the client (user)
+		ClientSession session = getSession(user);
+		session.disconnect();
+		clients.remove(user);
 	}
 
 	public void createTopic(String topic) {
@@ -71,9 +69,7 @@ public class Storage {
 
 	public void deleteTopic(String topic) {
 		// TODO: delete topic from the storage
-
-		throw new UnsupportedOperationException(TODO.method());
-		
+		subscriptions.remove(topic);
 	}
 
 	public void addSubscriber(String user, String topic) {
@@ -87,7 +83,12 @@ public class Storage {
 
 	public void removeSubscriber(String user, String topic) {
 		// TODO: remove the user as subscriber to the topic
-
-		throw new UnsupportedOperationException(TODO.method());
+		if(getTopics().contains(topic)) {
+			Set<String> liste = getSubscribers(topic);
+			if(liste.contains(user)){
+				liste.remove(user);
+				subscriptions.put(topic, liste);
+			}
+		}
 	}
 }
