@@ -1,5 +1,9 @@
 package no.hvl.dat110.messages;
 
+/**
+ * Author Espen (har fult ansvar hvis det oppstår problemer i koden) og Tobias (Prosjektleder, oraniserer, Unittester, Admin, Avdelingsleder)
+ */
+
 public class SubscribeMsg extends Message {
 
 	// message sent from client to subscribe on a topic

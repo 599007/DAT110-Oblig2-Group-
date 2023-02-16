@@ -8,7 +8,7 @@ public class PublishMsg extends Message {
 	String message;
 	String topic;
 	public PublishMsg(String user, String topic, String message) {
-	super(MessageType.UNSUBSCRIBE, user);
+	super(MessageType.PUBLISH, user);
 	this.topic = topic;
 	this.message = message;
 	}
