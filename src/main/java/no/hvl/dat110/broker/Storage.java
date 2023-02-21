@@ -30,9 +30,7 @@ public class Storage {
 	}
 
 	public Set<String> getTopics() {
-
 		return subscriptions.keySet();
-
 	}
 
 	// get the session object for a given user
