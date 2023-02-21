@@ -33,7 +33,6 @@ public class ClientSession {
 	}
 	
 	public void send(Message message) {
-
 		MessageUtils.send(connection, message);
 	}
 
