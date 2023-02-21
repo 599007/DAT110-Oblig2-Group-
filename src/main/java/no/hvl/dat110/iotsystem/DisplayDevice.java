@@ -5,16 +5,15 @@ import no.hvl.dat110.messages.Message;
 import no.hvl.dat110.messages.PublishMsg;
 import no.hvl.dat110.common.TODO;
 
+import static no.hvl.dat110.iotsystem.Common.*;
+
 public class DisplayDevice {
 	
 	private static final int COUNT = 10;
 		
 	public static void main (String[] args) {
-		
 		System.out.println("Display starting ...");
-		
-		// TODO - START
-				
+
 		// create a client object and use it to
 		
 		// - connect to the broker - use "display" as the username
@@ -24,11 +23,16 @@ public class DisplayDevice {
 		// - unsubscribe from the topic
 		// - disconnect from the broker
 		
-		// TODO - END
+		Client client = new Client("display",BROKERHOST,BROKERPORT);
+		client.connect();
+		client.createTopic(TEMPTOPIC);
+		client.subscribe(TEMPTOPIC);
+		for (int i = 0; i < COUNT; i++) {
+			client.receive();
+		}
+		client.unsubscribe(TEMPTOPIC);
+		client.disconnect();
 		
 		System.out.println("Display stopping ... ");
-		
-		throw new UnsupportedOperationException(TODO.method());
-		
 	}
 }
